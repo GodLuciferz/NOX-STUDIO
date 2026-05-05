@@ -1,0 +1,371 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+  :root {
+    --dg: #0a2e1a;
+    --dg2: #0f3d22;
+    --dg3: #1a5c34;
+    --gold: #c9a84c;
+    --gold2: #e8c96b;
+    --gold3: #f5e0a0;
+    --cream: #fdf6e3;
+  }
+
+  .nd-wrap {
+    background: linear-gradient(160deg, #071a0e 0%, #0a2416 40%, #0d2d1c 100%);
+    font-family: 'Rajdhani', sans-serif;
+    padding: 0 0 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nd-wrap::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .nd-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,92,52,0.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .nd-header {
+    text-align: center;
+    padding: 2.5rem 1.5rem 2rem;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+    position: relative;
+  }
+
+  .nd-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold2);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+
+  .nd-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 7vw, 3.2rem);
+    font-weight: 900;
+    color: var(--gold2);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    line-height: 1;
+    text-shadow: 0 0 40px rgba(201,168,76,0.3);
+    margin: 0 0 0.4rem;
+  }
+
+  .nd-subtitle {
+    font-size: 13px;
+    color: rgba(201,168,76,0.55);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .nd-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 1.2rem auto 0;
+    width: fit-content;
+  }
+
+  .nd-divider span {
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  .nd-divider span:last-child {
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .nd-divider .diamond {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+
+  .nd-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    padding: 1px;
+    margin: 2rem 1rem 0;
+    border: 1px solid rgba(201,168,76,0.15);
+    background: rgba(201,168,76,0.08);
+    border-radius: 4px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .nd-card {
+    background: rgba(7,20,12,0.85);
+    padding: 1.4rem 1.4rem 1.2rem;
+    position: relative;
+    transition: background 0.25s;
+  }
+
+  .nd-card:hover {
+    background: rgba(15,40,22,0.95);
+  }
+
+  .nd-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .nd-card:hover::before { opacity: 1; }
+
+  .nd-card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .nd-num {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--dg3);
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .nd-card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold2);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .nd-features {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .nd-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 13.5px;
+    color: rgba(253,246,227,0.72);
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  .nd-dot {
+    width: 5px; height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+    opacity: 0.7;
+  }
+
+  .nd-footer {
+    text-align: center;
+    padding: 2rem 1.5rem 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .nd-footer-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
+    margin-bottom: 1.4rem;
+  }
+
+  .nd-footer-text {
+    font-size: 11px;
+    color: rgba(201,168,76,0.45);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+</style>
+
+<div class="nd-wrap">
+  <div class="nd-header">
+    <div class="nd-badge">Made by ApkNox · Version 2.0 · 2026</div>
+    <div class="nd-title">NOX DHANDHA</div>
+    <div class="nd-subtitle">Smart Digital Hisab Kitab App</div>
+    <div class="nd-divider">
+      <span></span>
+      <div class="diamond"></div>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="nd-grid">
+
+    <div class="nd-card">
+      <div class="nd-card-head">
+        <div class="nd-num">01</div>
+        <div class="nd-card-title">Login & Account</div>
+      </div>
+      <ul class="nd-features">
+        <li><span class="nd-dot"></span>Secure login / register with session memory</li>
+        <li><span class="nd-dot"></span>Forgot password reset via email (Supabase)</li>
+        <li><span class="nd-dot"></span>Multi-user secure logout protection</li>
+      </ul>
+    </div>
+
+    <div class="nd-card">
+      <div class="nd-card-head">
+        <div class="nd-num">02</div>
+        <div class="nd-card-title">Home Screen</div>
+      </div>
+      <ul class="nd-features">
+        <li><span class="nd-dot"></span>Welcome header with seller name</li>
+        <li><span class="nd-dot"></span>Daily sales, profit & items quick summary</li>
+        <li><span class="nd-dot"></span>Premium glow animation dark green theme</li>
+        <li><span class="nd-dot"></span>Language: Hindi / Urdu / Hinglish</li>
+      </ul>
+    </div>
+
+    <div class="nd-card">
+      <div class="nd-card-head">
+        <div class="nd-num">03</div>
+        <div class="nd-card-title">Aaj Ki Bikri</div>
+      </div>
+      <ul class="nd-features">
+        <li><span class="nd-dot"></span>Quick entry with smart quantity chips</li>
+        <li><span class="nd-dot"></span>Color-coded sales table interface</li>
+        <li><span class="nd-dot"></span>Long-press to delete entry</li>
+        <li><span class="nd-dot"></span>Live updating total sales & profit bar</li>
+        <li><span class="nd-dot"></span>Loading spinner for realtime feedback</li>
+      </ul>
+    </div>
+
+    <div class="nd-card">
+      <div class="nd-card-head">
+        <div class="nd-num">04</div>
+        <div class="nd-card-title">Mahine Ka Hisab</div>
+      </div>
+      <ul class="nd-features">
+        <li><span class="nd-dot"></span>Day-wise grouped monthly data view</li>
+        <li><span class="nd-dot"></span>Tap any day to open detailed popup entries</li>
+        <li><span class="nd-dot"></span>Monthly total sales & profit summary header</li>
+      </ul>
+    </div>
+
+    <div class="nd-card">
+      <div class="nd-card-head">
+        <div class="nd-num">05</div>
+        <div class="nd-card-title">Calculator</div>
+      </div>
+      <ul class="nd-features">
+        <li><span class="nd-dot"></span>Real physical calculator-style interface</li>
+        <li><span class="nd-dot"></span>Supports +, −, ×, ÷, %, √, +/- operations</li>
+        <li><span class="nd-dot"></span>Memory buttons: M+, M−, MR</li>
+      </ul>
+    </div>
+
+    <div class="nd-card">
+      <div class="nd-card-head">
+        <div class="nd-num">06</div>
+        <div class="nd-card-title">Data Backup & Export</div>
+      </div>
+      <ul class="nd-features">
+        <li><span class="nd-dot"></span>Secure cloud backup via Supabase</li>
+        <li><span class="nd-dot"></span>Manual backup restore option</li>
+        <li><span class="nd-dot"></span>Export reports as PDF or Excel</li>
+        <li><span class="nd-dot"></span>WhatsApp sharing support</li>
+      </ul>
+    </div>
+
+    <div class="nd-card">
+      <div class="nd-card-head">
+        <div class="nd-num">07</div>
+        <div class="nd-card-title">Admin Panel</div>
+      </div>
+      <ul class="nd-features">
+        <li><span class="nd-dot"></span>Add / remove seller accounts remotely</li>
+        <li><span class="nd-dot"></span>Monitor seller sales activity live</li>
+        <li><span class="nd-dot"></span>Send announcements to all users</li>
+        <li><span class="nd-dot"></span>Control advertisement banners inside app</li>
+        <li><span class="nd-dot"></span>Manual database backup trigger</li>
+        <li><span class="nd-dot"></span>Usage analytics dashboard for owner</li>
+        <li><span class="nd-dot"></span>Enable / disable app features remotely</li>
+      </ul>
+    </div>
+
+    <div class="nd-card">
+      <div class="nd-card-head">
+        <div class="nd-num">08</div>
+        <div class="nd-card-title">Smart Notifications</div>
+      </div>
+      <ul class="nd-features">
+        <li><span class="nd-dot"></span>Daily entry reminder alerts</li>
+        <li><span class="nd-dot"></span>Backup reminder notifications</li>
+        <li><span class="nd-dot"></span>Monthly summary notification system</li>
+      </ul>
+    </div>
+
+    <div class="nd-card">
+      <div class="nd-card-head">
+        <div class="nd-num">09</div>
+        <div class="nd-card-title">Premium Experience</div>
+      </div>
+      <ul class="nd-features">
+        <li><span class="nd-dot"></span>Fast lightweight performance engine</li>
+        <li><span class="nd-dot"></span>Encrypted secure data storage</li>
+        <li><span class="nd-dot"></span>Offline mode with auto sync</li>
+        <li><span class="nd-dot"></span>Future auto-update ready architecture</li>
+      </ul>
+    </div>
+
+    <div class="nd-card">
+      <div class="nd-card-head">
+        <div class="nd-num">10</div>
+        <div class="nd-card-title">Branding & Platform</div>
+      </div>
+      <ul class="nd-features">
+        <li><span class="nd-dot"></span>Powered by Supabase Cloud database</li>
+        <li><span class="nd-dot"></span>Custom-built ApkNox lightweight engine</li>
+        <li><span class="nd-dot"></span>Direct APK install — Play Store not required</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="nd-footer">
+    <div class="nd-footer-line"></div>
+    <div class="nd-footer-text">NOX DHANDHA &nbsp;·&nbsp; Made by ApkNox &nbsp;·&nbsp; Powered by Supabase</div>
+  </div>
+</div>
